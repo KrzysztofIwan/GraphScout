@@ -1,0 +1,15 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Środowisko wirtualne
+venv/
+ENV/
+
+# Pliki binarne Pythona i pamięć podręczna
+__pycache__/
+*.py[cod]
+
+# Pliki konfiguracyjne z kluczami API (bardzo ważne!)
+.env
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
