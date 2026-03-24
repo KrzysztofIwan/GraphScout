@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "Kuźnice",
+      "elevation": 1010,
+      "lat": 49.2694,
+      "lon": 19.9806,
+      "type": "parking"
+    },
+    {
+      "id": "Przelecz_miedzy_Kopami",
+      "elevation": 1499,
+      "lat": 49.2558,
+      "lon": 20.0033,
+      "type": "pass"
+    },
+    {
+      "id": "Murowaniec",
+      "elevation": 1500,
+      "lat": 49.2436,
+      "lon": 20.0072,
+      "type": "shelter"
+    },
+    {
+      "id": "Kasprowy_Wierch",
+      "elevation": 1987,
+      "lat": 49.2322,
+      "lon": 19.9817,
+      "type": "summit" 
+    },
+    {
+      "id": "Myslenickie_Turnie",
+      "elevation": 1360,
+      "lat": 49.2483,
+      "lon": 19.9712,
+      "type": "junction"
+    }
+  ],
+  "links": [
+    {
+      "source": "Kuznice",
+      "target": "Przelecz_miedzy_Kopami",
+      "time_forward": 100,
+      "time_backward": 70,
+      "distance_km": 4.2,
+      "difficulty": 2,
+      "color": "yellow",
+      "winter_closure": false
+    },
+    {
+      "source": "Przelecz_miedzy_Kopami",
+      "target": "Murowaniec",
+      "time_forward": 30,
+      "time_backward": 25,
+      "distance_km": 1.5,
+      "difficulty": 1,
+      "color": "blue",
+      "winter_closure": false
+    },
+    {
+      "source": "Murowaniec",
+      "target": "Kasprowy_Wierch",
+      "time_forward": 95,
+      "time_backward": 70,
+      "distance_km": 3.5,
+      "difficulty": 2,
+      "color": "yellow",
+      "winter_closure": false
+    },
+    {
+      "source": "Myslenickie_Turnie",
+      "target": "Kasprowy_Wierch",
+      "time_forward": 95,
+      "time_backward": 70,
+      "distance_km": 3.4,
+      "difficulty": 2,
+      "color": "green",
+      "winter_closure": false
+    },
+    {
+      "source": "Kuznice",
+      "target": "Myslenickie_Turnie",
+      "time_forward": 105,
+      "time_backward": 70,
+      "distance_km": 3.6,
+      "difficulty": 2,
+      "color": "green",
+      "winter_closure": false
+    }
+  ]
+}
