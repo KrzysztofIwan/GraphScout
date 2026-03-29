@@ -1,11 +1,39 @@
 {
   "nodes": [
     {
-      "id": "Kuźnice",
+      "id": "Kuznice",
       "elevation": 1010,
       "lat": 49.2694,
       "lon": 19.9806,
       "type": "parking"
+    },
+    {
+      "id": "Szlak_na_Nosal",
+      "elevation": 951,
+      "lat": 49.2787,
+      "lon": 19.9818,
+      "type": "parking"
+    },
+    {
+      "id": "Nosal",
+      "elevation": 1206,
+      "lat": 49.2764,
+      "lon": 19.9970,
+      "type" :"summit"
+    },
+    {
+      "id": "Przelecz_Nosalowa",
+      "elevation" : 1103,
+      "lat": 49.2730,
+      "lon": 19.9914,
+      "type": "pass"
+    },
+    {
+      "id": "Odejscie_na_Nosalowa_Przelecz",
+      "elevation" : 1094,
+      "lat": 49.2702,
+      "lon": 19.9867,
+      "type": "pass"
     },
     {
       "id": "Przelecz_miedzy_Kopami",
@@ -37,6 +65,57 @@
     }
   ],
   "links": [
+    {
+      "source":"Odejscie_na_Nosalowa_Przelecz",
+      "target": "Przelecz_miedzy_Kopami",
+      "time_forward": 90,
+      "time_backward": 65,
+      "distance_km": 2.8,
+      "difficulty": 2,
+      "color": "blue",
+      "winter_closure" : false
+    },
+    {
+      "source": "Nosal",
+      "target": "Przelecz_Nosalowa",
+      "time_forward": 5,
+      "time_backward": 15,
+      "distance_km": 0.5,
+      "difficulty" : 2,
+      "color" : "green",
+      "winter_closure": false
+    },
+    {
+      "source": "Przelecz_Nosalowa",
+      "target": "Odejscie_na_Nosalowa_Przelecz",
+      "time_forward": 6,
+      "time_backward": 6,
+      "distance_km": 0.6,
+      "difficulty": 1,
+      "color": "green",
+      "winter_closure" : false
+    },
+    {
+      "source" : "Odejscie_na_Nosalowa_Przelecz",
+      "target": "Kuznice",
+      "time_forward": 8,
+      "time_backward": 12,
+      "distance_km": 0.5,
+      "difficulty": 1,
+      "color": "green",
+      "winter_closure": false
+
+    },
+    {
+      "source": "Szlak_na_Nosal",
+      "target": "Nosal",
+      "time_forward": 40,
+      "time_backward": 20,
+      "distance_km": 0.9,
+      "difficulty": 2,
+      "color" : "green",
+      "winter_closure": false
+    },
     {
       "source": "Kuznice",
       "target": "Przelecz_miedzy_Kopami",
