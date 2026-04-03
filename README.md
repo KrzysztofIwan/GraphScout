@@ -16,4 +16,7 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich.
 * `data/` – Dane o szlakach i połączeniach.
     * `trails/` - Szlaki zapisane w formacie JSON.
     * `visualizations/` - Wizualizacje całego grafu który tworzymy.
+* `tests/` - Testy jednostkowe.
 * `main.py` – Główny punkt wejścia do aplikacji.
+
+## Instalacja
