@@ -40,7 +40,7 @@ def render_interface():
             st.markdown(prompt)
 
         with st.chat_message("ai"):
-            with st.spinner("Myśle proszę daj mi chwilę"):
+            with st.spinner("Przetwarzam twoje pytanie..."):
                 response = gemini_client.send_message(prompt)
                 full_response = response.text
                 st.markdown(full_response)

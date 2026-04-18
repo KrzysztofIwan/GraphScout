@@ -1,4 +1,4 @@
 {
     "api_key" : "",
-    "gemini_model": "gemini-2.5-flash"
+    "gemini_model": "gemini-3-flash-preview"
 }

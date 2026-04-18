@@ -5,8 +5,7 @@ import time
 
 class GeminiClient:
     def __init__(self):
-        file_path = 'config/gemini_api.json'
-        config = self._load_config(file_path)
+        config = self._load_config('config/gemini_api.json')
         self.model = config.get('gemini_model').strip()
         self.api_key = config.get('api_key').strip()
         self.client = genai.Client(api_key = self.api_key)
