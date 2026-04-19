@@ -28,7 +28,7 @@ class OpenMeteoClient:
             response = requests.get(self.url, params)
             response.raise_for_status()
             data = response.json()
-            print(data);
+            print(data)
         
         except requests.exceptions.RequestException as e:
             print(f"Błąd połączenia: {e}")

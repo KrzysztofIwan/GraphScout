@@ -1,4 +1,4 @@
-import networkx as nx
+import networkx as nx # type: ignore
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import json
@@ -20,7 +20,9 @@ class TrailGraph:
         for node in data['nodes']:
             self.graph.add_node(
                 node['id'], 
-                elevation=node['elevation'], 
+                elevation=node['elevation'],
+                lat=node['lat'],
+                lon=node['lon'],
                 pos=(node['lon'], node['lat']), 
                 type=node['type']
             )
@@ -104,6 +106,10 @@ class TrailGraph:
         plt.axis('off')
         return fig
 
+    def show_visualization(self):
+        self._setup_plot()
+        plt.show()
+
     def save_visualization(self, output_dir="output"):
         os.makedirs(output_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -113,7 +119,3 @@ class TrailGraph:
         plt.savefig(full_path, bbox_inches='tight', dpi=300)
         plt.close(fig)
         print(f"Wizualizacja zapisana: {full_path}")
-
-    def show_visualization(self):
-        self._setup_plot()
-        plt.show()
