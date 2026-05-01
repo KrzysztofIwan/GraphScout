@@ -26,5 +26,12 @@ TODO
 * `main.py` – Główny punkt wejścia do aplikacji.
 
 ## Uruchomienie
-Zainstalowanie wszystkich potrzebnych bibliotek `pip install -r requirements.txt`
-Uruchomienie projektu z terminala `streamlit run main.py'`
+Zainstalowanie wszystkich potrzebnych bibliotek 
+```bash
+pip install -r requirements.txt
+```
+
+Uruchomienie projektu z terminala 
+```bash
+streamlit run main.py'
+```

@@ -13,4 +13,3 @@ __pycache__/
 # Pliki systemowe
 .DS_Store
 Thumbs.db
-config/gemini_api.json
