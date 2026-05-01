@@ -16,8 +16,6 @@ def get_heuristic(current_node, end_node, Graph):
     #Obliczanie h(n) - optymistyczne dotarcie do celu
     n1 = Graph.nodes[current_node]
     n2 = Graph.nodes[end_node]
-
-    dist_km = haversine_distance(n1['lat'], n1['lon'], n2['lat'], n2['lon'])
-    
+    dist_km = haversine_distance(n1['lat'], n1['lon'], n2['lat'], n2['lon'])    
     #Zakładam że pokonanie 1km zajmuje 10min (szybkie tempo marszu)
     return dist_km *10

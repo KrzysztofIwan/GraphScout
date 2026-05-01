@@ -1,7 +1,7 @@
 import math
 import networkx as nx # type: ignore
 import heapq
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Tuple
 from .heversine_pathfinder import get_heuristic
 
 class AStarPathFinder:
@@ -10,8 +10,8 @@ class AStarPathFinder:
 
     #Zmienne są stringami ponieważ wierzchołki w grafie mają swoje nazwy
     def find_path(self, start_node: str, goal_node: str) -> List[str]:
-
-        #SPrawdzenie czy wierzchołki istnieją w grafie
+        """Wyszukiwanie najlepszej ścieżki w grafie"""
+        #Sprawdzenie czy wierzchołki istnieją w grafie
         if start_node not in self.graph or goal_node not in self.graph:
             print(f"Błąd: Jeden z wierzchołków ({start_node}, {goal_node}) nie istnieje w grafie.")
             return []

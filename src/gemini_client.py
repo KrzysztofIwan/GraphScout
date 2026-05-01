@@ -1,7 +1,9 @@
-from google import genai
 import json
 import os
 import time
+import networkx as nx # type: ignore
+from src.pathfinder.astar_pathfinder import AStarPathFinder
+from google import genai
 
 class GeminiClient:
     def __init__(self):
@@ -20,8 +22,19 @@ class GeminiClient:
     def generate_chat(self):
         self.chat = self.client.chats.create(model = self.model)
 
-    def send_message(self, message):
+    def send_message(self, message: str, graph: nx.DiGraph):
         time.sleep(1) # Dodanie przestoju z uwagi na limitowaną liczbę zapytań
+        result = None
         if not self.chat:
             self.generate_chat() # Jeżeli chat nie istnieje tworzymy go na nowo
-        return self.chat.send_message(message)
+
+        #result = self.chat.send_message(message)
+        pathfinder = AStarPathFinder(graph.graph)
+        result = self.client.models.generate_content(
+            model = self.model,
+            contents= message,
+            config={
+                "tools" : [pathfinder.find_path]
+            }
+        )
+        return result;

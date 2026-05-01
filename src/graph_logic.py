@@ -1,12 +1,12 @@
 import networkx as nx # type: ignore
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 import json
 import os
 import numpy as np
 from datetime import datetime
+from matplotlib.lines import Line2D
 
-class TrailGraph:
+class GraphLogic:
     def __init__(self):
         self.graph = nx.DiGraph()
 
@@ -39,6 +39,8 @@ class TrailGraph:
             
             self.graph.add_edge(src, tgt, weight=link['time_forward'], **common_attrs)
             self.graph.add_edge(tgt, src, weight=link['time_backward'], **common_attrs)
+
+        return self
 
     def _setup_plot(self):
         pos = nx.get_node_attributes(self.graph, 'pos')
@@ -110,7 +112,7 @@ class TrailGraph:
         self._setup_plot()
         plt.show()
 
-    def save_visualization(self, output_dir="output"):
+    def save_visualization(self, output_dir: str):
         os.makedirs(output_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         full_path = os.path.join(output_dir, f"trail_map_{timestamp}.png")

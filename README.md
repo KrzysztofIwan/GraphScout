@@ -8,15 +8,23 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich.
 ## Główne funkcjonalności
 * **Reprezentacja grafowa:** Szlaki górskie i szczyty zapisane jako węzły i krawędzie.
 * **Interfejs konwersacyjny:** Intuicyjny chat ułatwiający wyszukiwanie optymalnych dróg.
-* **Analiza topologii:** Wykorzystanie algorytmów grafowych do nawigacji w trudnym terenie.
+* **Analiza topologii:** Wykorzystanie algorytmu A* do wyszukania najlepszej ścieżki.
+* **Interface:** Zaprojektowany za pomocą biblioteki strealit.
+
+## Użyte technologie
+TODO
 
 ## Struktura projektu
-* `config/` - Konfiguracja z API.
+* `.vscode/` - Konfiguracja dla debugu
+* `config/` - Konfiguracja z APIs.
 * `src/` – Logika grafu oraz integracja z modelem AI.
+    * `pathfinder/` - Algorytmy wyszukiwania najlepszej ścieżki w grafie.
 * `data/` – Dane o szlakach i połączeniach.
     * `trails/` - Szlaki zapisane w formacie JSON.
     * `visualizations/` - Wizualizacje całego grafu który tworzymy.
 * `tests/` - Testy jednostkowe.
 * `main.py` – Główny punkt wejścia do aplikacji.
 
-## Instalacja
+## Uruchomienie
+Zainstalowanie wszystkich potrzebnych bibliotek `pip install -r requirements.txt`
+Uruchomienie projektu z terminala `streamlit run main.py'`
