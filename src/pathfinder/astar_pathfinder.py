@@ -3,6 +3,7 @@ import networkx as nx # type: ignore
 import heapq
 from typing import List, Dict, Tuple
 from .heversine_pathfinder import get_heuristic
+from ..helpers.string_helper import delete_polish_chars
 
 class AStarPathFinder:
     def __init__(self, graph: nx.DiGraph):
@@ -11,9 +12,18 @@ class AStarPathFinder:
     #Zmienne są stringami ponieważ wierzchołki w grafie mają swoje nazwy
     def find_path(self, start_node: str, goal_node: str) -> List[str]:
         """Wyszukiwanie najlepszej ścieżki w grafie"""
+
+        #Pozbywanie się polskich znaków
+        start_node = delete_polish_chars(start_node)
+        goal_node = delete_polish_chars(goal_node)
+
         #Sprawdzenie czy wierzchołki istnieją w grafie
-        if start_node not in self.graph or goal_node not in self.graph:
-            print(f"Błąd: Jeden z wierzchołków ({start_node}, {goal_node}) nie istnieje w grafie.")
+        if start_node not in self.graph:
+            print(f"Błąd: Wierzołek ({start_node}) nie istnieje w grafie.")
+            return []
+        
+        if goal_node not in self.graph:
+            print(f"Błąd: Wierzchołek ({goal_node}) nie istnieje w grafie.")
             return []
 
         # Kolejka priorytetowa przechowująca krotki (f_score, node_id)
@@ -64,5 +74,5 @@ class AStarPathFinder:
         total_path = [current]
         while current in came_from:
             current = came_from[current]
-            total_path.append(current)
+            total_path.append(current.replace("_"," "))
         return total_path[::-1] # Odwrócenie listy na [Start -> Cel]

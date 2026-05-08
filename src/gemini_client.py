@@ -34,7 +34,9 @@ class GeminiClient:
             model = self.model,
             contents= message,
             config={
-                "tools" : [pathfinder.find_path]
+                "tools" : [pathfinder.find_path],
+                "system_instruction" : "Zawsze wypisuj trasę wyliczoną przez kod oraz wypisz wszystkie punkty jakie trzeba odwiedzić." +
+                                        "Odpowiedź ma być wyliczana z danych w tools"
             }
         )
         return result;
