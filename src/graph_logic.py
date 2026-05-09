@@ -46,8 +46,11 @@ class GraphLogic:
         pos = nx.get_node_attributes(self.graph, 'pos')
         
         type_colors = {
-            'summit': '#ff4d4d', 'shelter': '#4d79ff',
-            'parking': '#2eb82e', 'pass': '#ffa31a', 'junction': '#a6a6a6'
+            'summit': '#ff4d4d', 
+            'shelter': '#4d79ff',
+            'parking': '#2eb82e', 
+            'pass': '#ffa31a', 
+            'junction': '#a6a6a6'
         }
         
         node_colors = [type_colors.get(self.graph.nodes[n].get('type'), '#ffffff') for n in self.graph.nodes()]
@@ -67,7 +70,7 @@ class GraphLogic:
                 edge_color=d['color'], width=2.5,
                 arrowstyle='-|>', arrowsize=25,
                 connectionstyle=f'arc3,rad={rad}',
-                min_source_margin=20, min_target_margin=20, ax=ax
+                min_source_margin=10, min_target_margin=10, ax=ax
             )
 
         # 3. Rysowanie etykiet węzłów
@@ -98,12 +101,12 @@ class GraphLogic:
                     bbox=dict(facecolor='white', edgecolor='none', alpha=0.8, pad=0.2),
                     zorder=10)
 
-        plt.title("Graf Szlaków Tatrzańskich - Poprawiona Czytelność", pad=20, fontsize=15)
+        plt.title("Graf Szlaków Tatrzańskich", pad=20, fontsize=15)
         
         legend_elements = [Line2D([0], [0], marker='o', color='w', label=k,
                           markerfacecolor=v, markersize=12, markeredgecolor='black') 
                           for k, v in type_colors.items()]
-        ax.legend(handles=legend_elements, title="Typy punktów", loc='upper left', frameon=True)
+        ax.legend(handles=legend_elements, title="Typy punktów", loc='lower right', frameon=True)
         
         plt.axis('off')
         return fig

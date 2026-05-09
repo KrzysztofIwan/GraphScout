@@ -1,5 +1,4 @@
 {
     "url" : "https://api.open-meteo.com/v1/forecast",
-    "timezone" : "Europe/Warsaw",
-    "hourly" : "temperature_2m,cloudcover"
+    "timezone" : "Europe/Warsaw"
 }
