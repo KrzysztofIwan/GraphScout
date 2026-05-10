@@ -17,6 +17,8 @@ def render_interface():
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+            if "image" in message:
+                st.image(message["image"])
 
     if prompt := st.chat_input("Gdzie chcesz się wybrać?"):
         st.session_state.messages.append({"role": "user", "content": prompt})

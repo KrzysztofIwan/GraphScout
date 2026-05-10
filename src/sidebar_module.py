@@ -1,3 +1,4 @@
+import time
 import streamlit as st # type: ignore
 from src.gemini_client import GeminiClient
 from src.graph_logic import GraphLogic
@@ -9,11 +10,12 @@ def sidebar_init(graph: GraphLogic):
     with st.sidebar:
         st.caption("Centrum akcji")
         st.button("Nowy chat", icon="💬", on_click = open_new_chat)
-        #st.button("Wyświetl zrzut szlaków - TODO", icon="📉", on_click = show_trails_visualization, args=[graph])
+        st.button("Wyświetl zrzut szlaków", icon="📉", on_click = show_trails_visualization)
         st.button("Generuj zrzut szlaków", icon="📈", on_click = generate_trails_visualization, args=[graph])
         st.button("Testowanie A*", icon="🕸️", on_click = astar_test, args=[graph])
         st.button("Sprawdź pogodę", icon="⛅️", on_click=get_weather)
         st.caption("Czaty")
+        #TODO dodanie obsługi histori czatów
 
 def open_new_chat():
     """Generowanie nowego chatu z asystentem"""
@@ -25,9 +27,12 @@ def open_new_chat():
         client = GeminiClient()
         st.session_state.gemini_client = client
 
-def show_trails_visualization(graph: GraphLogic):
-    """Metoda zwraca całą mape szlaków"""
-    graph.show_visualization()
+def show_trails_visualization():
+    """Metoda zwraca vizualizację ścieżki wybranej przez asystenta"""
+    #with st.spinner("Spwadzam czy posiadam zrzut..."):
+    time.sleep(2)
+    st.session_state.messages.append({"role": "ai", "content": "Oto wizualizacja wszystkich szlaków!", 
+                                      "image": "data/visualizations/trail_map_20260509_092300.png"})         
 
 def generate_trails_visualization(graph: GraphLogic):
     """Metoda zapisuje całą mape jako zrzut w miejscu projektów"""    
@@ -49,5 +54,5 @@ def get_weather():
     st.toast("Wypisałem pogodę dla lokalizacji Szlak_na_Nosal - sprawdź konsole", icon="👍")
 
 def show_trail_visualization():
-    """Metoda zwraca vizualizację ścieżki wybranej przez asystenta"""
-    pass
+   """Tworzenie oraz wyświetlanie obrazka szlaku który wybraliśmy"""
+   pass
