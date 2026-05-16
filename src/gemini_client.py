@@ -2,7 +2,7 @@ import json
 import os
 import time
 import networkx as nx # type: ignore
-from src.pathfinder.astar_pathfinder import AStarPathFinder
+from src.function_calling import get_weather, get_the_best_path
 from google import genai
 
 class GeminiClient:
@@ -29,14 +29,13 @@ class GeminiClient:
             self.generate_chat() # Jeżeli chat nie istnieje tworzymy go na nowo
 
         #result = self.chat.send_message(message)
-        pathfinder = AStarPathFinder(graph.graph)
         result = self.client.models.generate_content(
             model = self.model,
             contents= message,
             config={
-                "tools" : [pathfinder.find_path],
-                "system_instruction" : "Zawsze wypisuj trasę wyliczoną przez kod oraz wypisz wszystkie punkty jakie trzeba odwiedzić." +
-                                        "Odpowiedź ma być wyliczana z danych w tools"
+                "tools" : [get_the_best_path, get_weather],
+                #"system_instruction" : "Zawsze wypisuj trasę wyliczoną przez kod oraz wypisz wszystkie punkty jakie trzeba odwiedzić." +
+                #                        "Odpowiedź ma być wyliczana z danych w tools"
             }
         )
         return result;

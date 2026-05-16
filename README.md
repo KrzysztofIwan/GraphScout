@@ -22,8 +22,10 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
 ## Struktura projektu
 * `.vscode/` - Konfiguracja dla debugu
 * `config/` - Konfiguracja z APIs.
-* `src/` – Logika grafu oraz integracja z modelem AI.
+* `src/` – Logika aplikacji.
     * `pathfinder/` - Algorytmy wyszukiwania najlepszej ścieżki w grafie.
+    * `views/` - Strony oraz podstrony aplikacji.
+    * `helpers/` - Metody pomocniczne.
 * `data/` – Dane o szlakach i połączeniach.
     * `trails/` - Szlaki zapisane w formacie JSON.
     * `visualizations/` - Wizualizacje całego grafu szlaków w formie grafu.
@@ -41,5 +43,5 @@ Dodanie do pliku `/config/geminie_api.json` swojego klucza do autoryzacji w pole
 
 Uruchomienie projektu z terminala 
 ```bash
-streamlit run main.py'
+streamlit run main.py
 ```

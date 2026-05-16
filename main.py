@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 from src.graph_logic import GraphLogic
-from src.helpers.chat_module.chat_helper import open_new_chat, show_trails_visualization, generate_trails_visualization, astar_test, get_weather
+from src.helpers.chat_helper import open_new_chat, show_trails_visualization, generate_trails_visualization, astar_test, get_weather
 
 st.set_page_config(page_title="Graph Scout", page_icon="🏔️", layout = "wide")
 
@@ -24,6 +24,6 @@ if pg == page_1:
         st.title("Czaty")
 elif pg == page_2:
     with st.sidebar:
-        st.button("Edytuj profil", use_container_width=True)
+        st.button("Edytuj profil", icon="⚡", use_container_width=True)
     
 pg.run()

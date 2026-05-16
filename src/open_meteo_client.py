@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from datetime import datetime, timedelta
+import pandas as pd
 
 class OpenMeteoClient:
     def __init__(self):
@@ -34,8 +35,21 @@ class OpenMeteoClient:
         try:
             response = requests.get(self.url, params)
             response.raise_for_status()
-            data = response.json()
-            print(data)
+            return response.json()
         
         except requests.exceptions.RequestException as e:
             print(f"Błąd połączenia: {e}")
+        
+    def process_weather(self, data):
+        df = pd.DataFrame(data['hourly'])
+        report_date = pd.to_datetime(df['time']).dt.date.iloc[0]
+        df['time'] = pd.to_datetime(df['time']).dt.strftime('%H:%M')
+        df['weather_code'] = df['weather_code'].astype(str).map(self.weather_codes)
+        
+        df.rename(columns={
+        'time': 'Godzina',
+        'temperature_2m': 'Temperatura w celcjuszach',
+        'weather_code': 'Pogoda'
+        }, inplace=True)
+
+        return report_date.strftime("%m/%d/%Y"), df;
