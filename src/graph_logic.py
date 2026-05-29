@@ -10,7 +10,8 @@ class GraphLogic:
     def __init__(self):
         self.graph = nx.DiGraph()
 
-    def build_trail_graph(self, json_path):
+    def build_trail_graph(self):
+        json_path = 'data/trails/polish_tatra_mountains.json'
         if not os.path.exists(json_path):
             raise FileNotFoundError(f"Błąd: Nie znaleziono pliku {json_path}")
 

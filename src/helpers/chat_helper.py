@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import time
+import json
 from src.gemini_client import GeminiClient
 from src.graph_logic import GraphLogic
 from src.pathfinder.astar_pathfinder import AStarPathFinder
@@ -70,3 +71,8 @@ def get_weather():
     }) 
 
     st.toast("Wypisałem pogodę dla lokalizacji Szlak_na_Nosal - sprawdź konsole", icon="👍")
+
+def get_into_about_trails_colors():
+    with open("data/trails/polish_trails_difficulty.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data

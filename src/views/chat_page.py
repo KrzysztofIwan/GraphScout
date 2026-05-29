@@ -4,6 +4,7 @@ from src.gemini_client import GeminiClient
 st.title("🏔️ Graph Scout")
 st.caption("Asysten wycieczek górskich", width= "content")
 st.info("Chatbot może generować nieprawdziwe informacje.", icon="⚠️")
+#st.info("Pamiętaj o telefonach alarmowych", icon="⚠️")
 graph = st.session_state['graph']
 
 if "messages" not in st.session_state:
@@ -15,13 +16,13 @@ for message in st.session_state.messages:
         if "image" in message:
             st.image(message["image"])
 
-if prompt := st.chat_input("Gdzie chcesz się wybrać?"):
+if prompt := st.chat_input("Jak mogę Ci pomóc?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("ai"):
-        with st.spinner("Przetwarzam twoje pytanie..."):
+        with st.spinner("Przetwarzam twoje pytanie...", show_time=True):
             gemini_client = GeminiClient()
             gemini_client.generate_chat()
             response = gemini_client.send_message(prompt, graph)

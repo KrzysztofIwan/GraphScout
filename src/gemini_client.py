@@ -2,14 +2,16 @@ import json
 import os
 import time
 import networkx as nx # type: ignore
-from src.function_calling import get_weather, get_the_best_path
+from src.function_calling import get_weather, get_the_best_path, get_into_about_trail_color
 from google import genai
+from src.dynamic_prompt_manager import DynamicPromptManager
 
 class GeminiClient:
     def __init__(self):
         config = self._load_config('config/gemini_api.json')
         self.model = config.get('gemini_model').strip()
         self.api_key = config.get('api_key').strip()
+        self.base_instruction = config.get('base_instruction').strip()
         self.client = genai.Client(api_key = self.api_key)
         self.chat = None
         
@@ -28,14 +30,15 @@ class GeminiClient:
         if not self.chat:
             self.generate_chat() # Jeżeli chat nie istnieje tworzymy go na nowo
 
-        #result = self.chat.send_message(message)
+        bulder = DynamicPromptManager(self.base_instruction)
+        current_instruction = bulder.build_prompt()
+
         result = self.client.models.generate_content(
             model = self.model,
             contents= message,
             config={
-                "tools" : [get_the_best_path, get_weather],
-                #"system_instruction" : "Zawsze wypisuj trasę wyliczoną przez kod oraz wypisz wszystkie punkty jakie trzeba odwiedzić." +
-                #                        "Odpowiedź ma być wyliczana z danych w tools"
+                "tools" : [get_the_best_path, get_weather, get_into_about_trail_color],
+                "system_instruction" : current_instruction
             }
         )
         return result;
