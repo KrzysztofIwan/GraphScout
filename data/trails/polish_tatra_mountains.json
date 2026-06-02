@@ -202,6 +202,76 @@
       "lat": 49.2469,
       "lon": 20.0860,
       "type": "junction"
+    },
+    {
+      "id": "Wodogrzmoty_Mickiewicza",
+      "elevation":  1100,
+      "lat": 49.2339,
+      "lon": 20.0877,
+      "type": "junction"
+    },
+    {
+      "id": "Odejscie_na_Kepe",
+      "elevation": 1404,
+      "lat": 49.2037,
+      "lon": 20.0710,
+      "type": "junction"
+    },
+    {
+      "id": "Morskie_Oko",
+      "elevation": 1400,
+      "lat": 49.2011,
+      "lon": 20.0708,
+      "type": "junction"
+    },
+    {
+      "id": "Morskie_Oko_Pod_Czarnym_Stawem",
+      "elevation": 1395,
+      "lat": 49.1935,
+      "lon": 20.0703,
+      "type": "pass"
+    },
+    {
+      "id": "Czarny_Staw_Pod_Rysami",
+      "elevation": 1583,
+      "lat": 49.1903,
+      "lon": 20.0737,
+      "type": "pass"
+    },
+    {
+      "id": "Rysy",
+      "elevation": 2499,
+      "lat": 49.1795,
+      "lon": 20.0881,
+      "type": "summit"
+    },
+    {
+      "id": "Mieguszowiecka_Przelecz_Pod_Chlopkiem",
+      "elevation": 2307,
+      "lat": 49.1836,
+      "lon": 20.0652,
+      "type": "summit"
+    },
+    {
+      "id": "Schronisko_PTTK_w_Roztoce",
+      "elevation": 1031,
+      "lat": 49.2336,
+      "lon": 20.0956,
+      "type": "shelter"
+    },
+    {
+      "id": "Dolina_Roztoki",
+      "elevation": 1435,
+      "lat": 49.2182,
+      "lon": 20.0511,
+      "type": "junction"
+    },
+    {
+      "id": "Schronisko_PTTK_w_Dolinie_Pieciu_Stawow_Polskich",
+      "elevation": 1672,
+      "lat": 49.2135,
+      "lon": 20.0484,
+      "type": "shelter"
     }
   ],
   "links": [
@@ -563,6 +633,116 @@
       "time_backward": 30,
       "distance_km": 1.6,
       "difficulty": 2,
+      "color": "black",
+      "winter_closure": false 
+    },
+    {
+      "source": "Droga_Oswalda_Balzera",
+      "target": "Wodogrzmoty_Mickiewicza",
+      "time_forward": 10,
+      "time_backward": 10,
+      "distance_km": 0.6,
+      "difficulty": 1,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Wodogrzmoty_Mickiewicza",
+      "target": "Odejscie_na_Kepe",
+      "time_forward": 80,
+      "time_backward": 65,
+      "distance_km": 4.6,
+      "difficulty": 1,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Odejscie_na_Kepe",
+      "target": "Morskie_Oko",
+      "time_forward": 36,
+      "time_backward": 36,
+      "distance_km": 0.3,
+      "difficulty": 1,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Morskie_Oko",
+      "target": "Morskie_Oko_Pod_Czarnym_Stawem",
+      "time_forward": 30,
+      "time_backward": 30,
+      "distance_km": 1.2,
+      "difficulty": 3,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Morskie_Oko_Pod_Czarnym_Stawem",
+      "target": "Czarny_Staw_Pod_Rysami",
+      "time_forward": 30,
+      "time_backward": 20,
+      "distance_km": 0.6,
+      "difficulty": 4,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Czarny_Staw_Pod_Rysami",
+      "target": "Rysy",
+      "time_forward": 200,
+      "time_backward": 120,
+      "distance_km": 3.2,
+      "difficulty": 5,
+      "color": "red",
+      "winter_closure": false 
+    },
+    {
+      "source": "Czarny_Staw_Pod_Rysami",
+      "target": "Mieguszowiecka_Przelecz_Pod_Chlopkiem",
+      "time_forward": 147,
+      "time_backward": 110,
+      "distance_km": 2.1,
+      "difficulty": 5,
+      "color": "green",
+      "winter_closure": false 
+    },
+    {
+      "source": "Wodogrzmoty_Mickiewicza",
+      "target": "Schronisko_PTTK_w_Roztoce",
+      "time_forward": 10,
+      "time_backward": 20,
+      "distance_km": 0.8,
+      "difficulty": 2,
+      "color": "green",
+      "winter_closure": false 
+    },
+    {
+      "source": "Wodogrzmoty_Mickiewicza",
+      "target": "Dolina_Roztoki",
+      "time_forward": 90,
+      "time_backward": 70,
+      "distance_km": 3.1,
+      "difficulty": 2,
+      "color": "green",
+      "winter_closure": false 
+    },
+    {
+      "source": "Dolina_Roztoki",
+      "target": "Schronisko_PTTK_w_Dolinie_Pieciu_Stawow_Polskich",
+      "time_forward": 25,
+      "time_backward": 20,
+      "distance_km": 1,
+      "difficulty": 3,
+      "color": "black",
+      "winter_closure": false 
+    },
+    {
+      "source": "Schronisko_PTTK_w_Dolinie_Pieciu_Stawow_Polskich",
+      "target": "Odejscie_na_Kepe",
+      "time_forward": 85,
+      "time_backward": 95,
+      "distance_km": 3.8,
+      "difficulty": 3,
       "color": "black",
       "winter_closure": false 
     }
