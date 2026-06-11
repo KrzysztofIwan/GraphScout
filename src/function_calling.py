@@ -25,13 +25,16 @@ def get_into_about_trail_color(trail_color:str):
     trail_difficulty = st.session_state['trail_difficulty']
     return trail_difficulty.get(delete_polish_chars(trail_color))
 
-def get_info_about_point():
+def get_info_about_point(point_name:str):
     """Pobieranie informacji na temat punktu na szlaku"""
-    #TODO
+    point_name = delete_polish_chars(point_name)
+    graph = st.session_state['graph']
+    pathfinder = AStarPathFinder(graph.graph)
+    return pathfinder.get_point_info(point_name)
 
-def get_durations(start_point:str, end_point:str):
-    """Zwraca czas przejcia pomiędzy punktem startowym a docelowym"""
-    #TODO
+def get_info_about_alarm_phone():
+    alarm_phones = st.session_state['alarm_phones']
+    return alarm_phones
 
 def get_parkings():
     """Pobiera najbliższe parkingi dla początkowych miejsc na szlaku integracja z Osm"""

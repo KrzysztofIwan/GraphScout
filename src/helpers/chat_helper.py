@@ -81,3 +81,8 @@ def get_into_about_trails_colors():
     with open("data/trails/polish_trails_difficulty.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
+
+def get_alarm_phones():
+    with open("data/important_phone.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data

@@ -1,13 +1,14 @@
 import streamlit as st
 from src.graph_logic import GraphLogic
 from src.helpers.user_helper import get_user_data
-from src.helpers.chat_helper import open_new_chat, show_trails_visualization, generate_trails_visualization, astar_test, get_weather, get_into_about_trails_colors
+from src.helpers.chat_helper import open_new_chat, show_trails_visualization, generate_trails_visualization, astar_test, get_weather, get_into_about_trails_colors, get_alarm_phones
 
 st.set_page_config(page_title="Graph Scout", page_icon="🏔️", layout = "wide")
 
 st.session_state['graph'] = GraphLogic().build_trail_graph()
 st.session_state['trail_difficulty'] = get_into_about_trails_colors()
 st.session_state['user_data'] = get_user_data()
+st.session_state['alarm_phones'] = get_alarm_phones()
 
 page_1 = st.Page("src/views/chat_page.py", title="Chatbot")
 page_2 = st.Page("src/views/user_page.py", title="Profil")

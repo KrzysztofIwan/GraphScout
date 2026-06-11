@@ -2,7 +2,7 @@ import json
 import os
 import time
 import networkx as nx # type: ignore
-from src.function_calling import get_weather, get_the_best_path, get_into_about_trail_color
+from src.function_calling import get_weather, get_the_best_path, get_info_about_point, get_into_about_trail_color, get_info_about_alarm_phone
 from google import genai
 from google.genai import errors
 from src.dynamic_prompt_manager import DynamicPromptManager
@@ -42,7 +42,7 @@ class GeminiClient:
                     model = self.model,
                     contents= message,
                     config={
-                        "tools" : [get_the_best_path, get_weather, get_into_about_trail_color],
+                        "tools" : [get_the_best_path, get_weather, get_into_about_trail_color, get_info_about_alarm_phone, get_info_about_point],
                         "system_instruction" : current_instruction
                     }
                 )

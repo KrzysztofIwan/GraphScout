@@ -116,3 +116,15 @@ class AStarPathFinder:
             "total_time_minutes": total_time,
             "total_distance_km": round(total_distance, 2)
         }
+    
+    def get_point_info(self, point:str) -> Dict:
+        if point not in self.graph:
+            print(f"Błąd: Wierzołek ({point}) nie istnieje w grafie.")
+            return {"odpowiedz" : "nie znaleziono wieszkołka w grafie"}
+        
+        info = self.graph.nodes.get(point)
+
+        return {
+            "Wysokość" : info['elevation'],
+            "Typ miejsca" : info['type']
+        }
