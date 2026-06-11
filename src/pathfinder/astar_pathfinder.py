@@ -76,3 +76,43 @@ class AStarPathFinder:
             current = came_from[current]
             total_path.append(current.replace("_"," "))
         return total_path[::-1] # Odwrócenie listy na [Start -> Cel]
+    
+    def get_path_details(self, path: List[str]) -> Dict:
+        if not path or len(path) < 2:
+            return {
+                "segments": [],
+                "total_time_minutes": 0,
+                "total_distance_km": 0.0
+            }
+
+        segments = []
+        total_time = 0
+        total_distance = 0.0
+
+        for i in range(len(path) - 1):
+            current_node = path[i].replace(" ", "_")
+            next_node = path[i+1].replace(" ", "_")
+
+            if self.graph.has_edge(current_node, next_node):
+                edge_data = self.graph[current_node][next_node]
+
+                time_taken = (edge_data.get('weight') or 0)                              
+                distance = (edge_data.get('dist') or  0.0)                            
+                color = edge_data.get('color', 'nieznany')
+
+                segments.append({
+                    "start_node": current_node,
+                    "end_node": next_node,
+                    "color": color,
+                    "time_minutes": time_taken,
+                    "distance_km": distance
+                })
+
+                total_time += time_taken
+                total_distance += distance
+
+        return {
+            "segments": segments,
+            "total_time_minutes": total_time,
+            "total_distance_km": round(total_distance, 2)
+        }

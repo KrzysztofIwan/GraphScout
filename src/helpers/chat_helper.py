@@ -34,8 +34,13 @@ def generate_trails_visualization(graph: GraphLogic):
 def astar_test(graph: GraphLogic):
     """Testowanie działania algorytmu wyszukiwania najlepszej ścieżki"""
     pathfinder = AStarPathFinder(graph.graph)
-    result_path = pathfinder.find_path("Kuznice", "Kasprowy_Wierch")
+    result_path = pathfinder.find_path("Kuznice", "Rysy")
     print(result_path)
+    result2 = pathfinder.get_path_details(result_path)
+    print('--------------------')
+    print(result2)
+    print('--------------------')
+    print('--------------------')
     st.toast("Wypisałem ścieżke - sprawdź konsole", icon="👍")
 
 def get_weather():

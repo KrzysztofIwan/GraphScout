@@ -10,7 +10,7 @@
                 "run",
                 "${workspaceFolder}/main.py",
                 "--server.port",
-                "8501",
+                "8502",
                 "--server.address",
                 "localhost"
             ],

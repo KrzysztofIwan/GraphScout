@@ -15,7 +15,10 @@ def get_the_best_path(start_point:str, end_point:str):
     graph = st.session_state['graph']
     pathfinder = AStarPathFinder(graph.graph)
     result = pathfinder.find_path(start_point, end_point)
-    return result
+    details = []
+    if result:
+        details = pathfinder.get_path_details(result)
+    return result, details
 
 def get_into_about_trail_color(trail_color:str):
     """Zwracanie informacji na temat koloru szlaku"""

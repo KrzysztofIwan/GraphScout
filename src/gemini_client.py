@@ -4,6 +4,7 @@ import time
 import networkx as nx # type: ignore
 from src.function_calling import get_weather, get_the_best_path, get_into_about_trail_color
 from google import genai
+from google.genai import errors
 from src.dynamic_prompt_manager import DynamicPromptManager
 
 class GeminiClient:
@@ -26,19 +27,34 @@ class GeminiClient:
 
     def send_message(self, message: str, graph: nx.DiGraph):
         time.sleep(1) # Dodanie przestoju z uwagi na limitowaną liczbę zapytań
-        result = None
         if not self.chat:
             self.generate_chat() # Jeżeli chat nie istnieje tworzymy go na nowo
 
         bulder = DynamicPromptManager(self.base_instruction)
         current_instruction = bulder.build_prompt()
+        
+        trials = 3
+        wait = 2
 
-        result = self.client.models.generate_content(
-            model = self.model,
-            contents= message,
-            config={
-                "tools" : [get_the_best_path, get_weather, get_into_about_trail_color],
-                "system_instruction" : current_instruction
-            }
-        )
-        return result;
+        for trail in range(trials):
+            try:
+                result = self.client.models.generate_content(
+                    model = self.model,
+                    contents= message,
+                    config={
+                        "tools" : [get_the_best_path, get_weather, get_into_about_trail_color],
+                        "system_instruction" : current_instruction
+                    }
+                )
+                return result
+            
+            except errors.ServerError as ex:
+                if ex.code == 503 and trail < trials - 1:
+                    print(f"Błąd 503 (Przeciążenie). Próba {trail + 1}/{trials}. Ponowna próba za {wait}s...")
+                    time.sleep(wait)
+                    wait *= 2 # Wykładnicze wydłużanie czasu oczekiwania
+                else:
+                    raise ex
+            
+            except Exception as ex:
+                raise ex
