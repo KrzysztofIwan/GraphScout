@@ -22,8 +22,8 @@ if pg == page_1:
         st.button("Nowy chat", icon="💬", on_click = open_new_chat, use_container_width=True)
         st.button("Wyświetl zrzut szlaków", icon="📉", on_click = show_trails_visualization, use_container_width=True)
         st.button("Generuj zrzut szlaków", icon="📈", on_click = generate_trails_visualization, use_container_width=True, args=[graph])
-        st.button("Testowanie A*", icon="🕸️", on_click = astar_test, use_container_width=True, args=[graph])
-        st.button("Sprawdź pogodę", icon="⛅️", on_click=get_weather, use_container_width=True)
+        #st.button("Testowanie A*", icon="🕸️", on_click = astar_test, use_container_width=True, args=[graph])
+        #st.button("Sprawdź pogodę", icon="⛅️", on_click=get_weather, use_container_width=True)
         st.title("Czaty")
 elif pg == page_2:
     with st.sidebar:
