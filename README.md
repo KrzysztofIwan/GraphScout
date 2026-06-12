@@ -12,9 +12,54 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
 * **Pogoda:** Połączenie z OpenMeteoAPI do informowania o możliwych zmianach pogodowych.
 * **Interface:** Zaprojektowany za pomocą biblioteki streamlit.
 
+### Reprezentacja szlaków
+---
+Szkalki górskie są implementowane za pomocą dokumentów w formacie JSON, poniżej została opisana implementacja danych.
+
+Punkty na mapie:
+```json
+{
+  "nodes": [
+        {
+            "id": "Kuznice", #nazwa punktu
+            "elevation": 1010, #wysokość nad poziomem moża
+            "lat": 49.2694, #szerokość geograficzna
+            "lon": 19.9806, #długość geograficzna
+            "type": "parking" #typ punktu
+        }
+    ]
+}
+```
+Węzły pomiędzy punktami:
+```json
+{
+    "links": [
+        {
+            "source":"Odejscie_na_Nosalowa_Przelecz", #punkt1
+            "target": "Przelecz_miedzy_Kopami", #punkt2
+            "time_forward": 90, #czas w minutach z punktu1 -> punktu2
+            "time_backward": 65, #czas w minutach z punktu2 -> punktu1
+            "distance_km": 2.8, #dystans pomiędzy punktami w km
+            "difficulty": 2, #stopień zaawansowania szlaku
+            "color": "blue", #kolor szlaku
+            "winter_closure" : false #czy szlak zamnięty na zime
+        }
+    ]
+}
+```
+
+### Obsługa danych pogodowych
+---
+* **Prognoza z wyprzedzeniem:** API dostarcza dane pogodowe z wyprzedzeniem 8 godzin.
+* **Formatowanie danych:** Surowe informacje o pogodzie są przetwarzane i modyfikowane tak, aby były w pełni czytelne i zrozumiałe dla użytkownika końcowego.
+* **Mapowanie kodów pogodowych:** Tekstowe opisy stanów pogodowych są mapowane na podstawie kodów zapisanych w pliku konfiguracyjnym `config/weather_code.json`.
+
 ## Użyte technologie
 * Python 3.13.5 - język bazowy
 * streamlit 1.56.0 - forntend aplikacji
+* google-genai 1.69 - integracja z Gemini API
+* pandas 3.0.2 - analiza oraz strukturyzacja danych
+* pydantic 2.12.5 - wlidacja danych
 * networkx 3.6.1 - budownaie grafu prezentującego mape szlaków
 * Requests - obsługa zapytań z openMeteoAPI
 * JSON - przetwarzanie struktur danych z API, odczyt konfiguracji
@@ -33,15 +78,15 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
 * `main.py` – Główny punkt wejścia do aplikacji.
 
 ## Uruchomienie
-Zainstalowanie wszystkich potrzebnych bibliotek 
+Zainstalowanie wszystkich potrzebnych bibliotek:
 ```bash
 pip install -r requirements.txt
 ```
 
-Dodanie do pliku `/config/geminie_api.json` swojego klucza do autoryzacji w pole `api_key`
+Dodanie do pliku `/config/geminie_api.json` swojego klucza do autoryzacji w pole `api_key`, na potrzeby działania aplikacji w formie demo zostawiam swój klucz. Można wykonywać 5 zapytań na minute, po przekroczeniu limitu token zostanie zablokowany.
 
 
-Uruchomienie projektu z terminala 
+Uruchomienie projektu z terminala:
 ```bash
 streamlit run main.py
 ```
