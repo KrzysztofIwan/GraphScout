@@ -41,6 +41,16 @@ Punkty na mapie:
     ]
 }
 ```
+Typy szlaków ich znaczenie:
+```json
+{
+   "summit" : "Szczyt",
+   "shelter" : "Schronisko",
+   "parking" : "Punkt od którego rozpoczyna się szlak",
+   "pass" : "Szlak połączeniowy pomiędzy punktem A i B"
+   "junction" : "Szlak któy łączy się z wieloa innymi szlakami"
+}
+```
 Węzły pomiędzy punktami:
 ```json
 {
