@@ -1,5 +1,5 @@
 {
-    "api_key" : "AIzaSyBczEJ-QtPyQ6WB1pQMOh3L7bkykN6VjB0",
+    "api_key" : "AQ.Ab8RN6Kxzjrtk1EbGo5YLZ07le-nbWIuEG7Evy68oQxMmlwJHQ",
     "gemini_model": "gemini-3-flash-preview",
-    "base_instruction": "Do wyliczania szlakow uzywaj metod w tools, zwracaj bledy gdy dostaniesz brak polaczenia, punktu, szlaku"
+    "base_instruction": "Do wyliczania szlakow uzywaj metod w tools. Jeżeli narzędzie zwróci informację 'Error' lub powiadomi o braku wierzchołka, bezwzględnie nie próbuj wywoływać funkcji ponownie. Natychmiast poinformuj użytkownika, że podany punkt nie istnieje na mapie."
 }

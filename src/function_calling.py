@@ -16,11 +16,11 @@ def get_the_best_path(start_point:str, end_point:str):
     pathfinder = AStarPathFinder(graph.graph)
     result = pathfinder.find_path(start_point, end_point)
     details = []
-    if result:
+    if result and result[0] != "Error":
         details = pathfinder.get_path_details(result)
     return result, details
 
-def get_into_about_trail_color(trail_color:str):
+def get_info_about_trail_color(trail_color:str):
     """Zwracanie informacji na temat koloru szlaku"""
     trail_difficulty = st.session_state['trail_difficulty']
     return trail_difficulty.get(delete_polish_chars(trail_color))

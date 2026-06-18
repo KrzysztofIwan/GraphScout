@@ -18,13 +18,16 @@ class AStarPathFinder:
         goal_node = delete_polish_chars(goal_node)
 
         #Sprawdzenie czy wierzchołki istnieją w grafie
+        if start_node not in self.graph and goal_node not in self.graph:
+            return ["Error", "Nie znaleziono takich punktów na mapie"]
+
         if start_node not in self.graph:
-            print(f"Błąd: Wierzołek ({start_node}) nie istnieje w grafie.")
-            return []
+            print(f"Błąd: Wierzchołek ({start_node}) nie istnieje w grafie.")
+            return ["Error", "Nie znaleziono takich punktów na mapie"]
         
         if goal_node not in self.graph:
             print(f"Błąd: Wierzchołek ({goal_node}) nie istnieje w grafie.")
-            return []
+            return ["Error", "Nie znaleziono takich punktów na mapie"]
 
         # Kolejka priorytetowa przechowująca krotki (f_score, node_id)
         # heapq zawsze wypycha najmniejszy pierwszy element
@@ -67,7 +70,7 @@ class AStarPathFinder:
                     # Duplikaty w open_set zostaną obsłużone przez wyższy f_score i zignorowane
                     heapq.heappush(open_set, (f_score[neighbor], neighbor))
 
-        return []  # Ścieżka nie istnieje
+        return ["Error", "Nie znaleziono ścieżki pomiędzy punktami"]  # Ścieżka nie istnieje
 
     def _reconstruct_path(self, came_from: Dict[str, str], current: str) -> List[str]:
         """Odtwarza trasę cofając się po rodzicach."""
@@ -119,8 +122,8 @@ class AStarPathFinder:
     
     def get_point_info(self, point:str) -> Dict:
         if point not in self.graph:
-            print(f"Błąd: Wierzołek ({point}) nie istnieje w grafie.")
-            return {"odpowiedz" : "nie znaleziono wieszkołka w grafie"}
+            #print(f"Błąd: Wierzołek ({point}) nie istnieje w grafie.")
+            return {"Error" : "Nie znaleziono takich punktów na mapie"}
         
         info = self.graph.nodes.get(point)
 

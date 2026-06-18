@@ -2,7 +2,7 @@ import streamlit as st
 
 class DynamicPromptManager:
     def __init__(self, base:str ):
-        self.instruction = "BEZWZGLEDNE OGRANICZENIA I INSTRUKCJE" + base
+        self.instruction = "BEZWZGLEDNE OGRANICZENIA I INSTRUKCJE\n" + base
 
     def build_prompt(self):
         user_data = st.session_state['user_data']

@@ -2,7 +2,7 @@ import json
 import os
 import time
 import networkx as nx # type: ignore
-from src.function_calling import get_weather, get_the_best_path, get_info_about_point, get_into_about_trail_color, get_info_about_alarm_phone
+from src.function_calling import get_weather, get_the_best_path, get_info_about_point, get_info_about_trail_color, get_info_about_alarm_phone
 from google import genai
 from google.genai import errors
 from src.dynamic_prompt_manager import DynamicPromptManager
@@ -33,24 +33,24 @@ class GeminiClient:
         bulder = DynamicPromptManager(self.base_instruction)
         current_instruction = bulder.build_prompt()
         
-        trials = 3
+        trial = 3
         wait = 2
 
-        for trail in range(trials):
+        for t in range(trial):
             try:
                 result = self.client.models.generate_content(
                     model = self.model,
                     contents= message,
                     config={
-                        "tools" : [get_the_best_path, get_weather, get_into_about_trail_color, get_info_about_alarm_phone, get_info_about_point],
+                        "tools" : [get_the_best_path, get_weather, get_info_about_trail_color, get_info_about_alarm_phone, get_info_about_point],
                         "system_instruction" : current_instruction
                     }
                 )
                 return result
             
             except errors.ServerError as ex:
-                if ex.code == 503 and trail < trials - 1:
-                    print(f"Błąd 503 (Przeciążenie). Próba {trail + 1}/{trials}. Ponowna próba za {wait}s...")
+                if ex.code == 503 and t < trial - 1:
+                    print(f"Błąd 503 (Przeciążenie). Próba {t + 1}/{trial}. Ponowna próba za {wait}s...")
                     time.sleep(wait)
                     wait *= 2 # Wykładnicze wydłużanie czasu oczekiwania
                 else:
