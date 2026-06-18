@@ -15,6 +15,8 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
   *   Turysta tatrzański
   *   Turysta wysokogórski
   *   Taternik
+* Dodanie połączenia z OSM w celu zwracania użytkowniką informacji i parkingach
+* Dodanie autentykacji użytkowników
 
 ## Główne funkcjonalności
 * **Reprezentacja grafowa:** Szlaki górskie i szczyty zapisane jako węzły i krawędzie.
