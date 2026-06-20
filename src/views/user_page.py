@@ -43,6 +43,9 @@ with tab_settings:
         placeholder="np. Preferuję szlaki techniczne, z dużą ilością łańcuchów, najlepiej w Tatrach Wysokich.",
         height=150)
 
+    #st.subheader("Wybrany model do odpowiedzi")
+    #Dodanie zwracania modeli które są używane
+    #st.selectbox("Model)
     #st.selectbox(
     #        "Preferowany poziom trudności",
     #        ["Łatwy", "Średni", "Trudny", "Zaawansowany"]

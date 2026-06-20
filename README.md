@@ -7,7 +7,7 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
 
 ### Planowany rozwój aplikacji
 * Dodanie możliwości wyboru przez użytkownika modelu z jakiego chce korzystać np. (Olama, Gpt, Gemini)
-* Przechowywanie informacji w bazie danych (SQLite)
+* Przechowywanie informacji w bazie danych (SQLite) lub SQL
 * Rozbudowa informacji o ścieżce o informacje o podłoży, aby rozważyć czy szlak nadaje się dla osób z dziećmi, osób niepełnosprawnych itd.
 * Opracowanie mechanizmu kategoryzacji wysiłku na szlaku za pomocą punktów GOT
 * Dodanie rang użytkowników które pomogą w wyznaczaniu odpowiednich szlaków, rangi poniżej:
@@ -17,6 +17,7 @@ Projekt skupia się w obecnej chwili nad nawigacją po Tatrach Polskich, *oraz j
   *   Taternik
 * Dodanie połączenia z OSM w celu zwracania użytkowniką informacji i parkingach
 * Dodanie autentykacji użytkowników
+* Dodanie historii czatów 
 
 ## Główne funkcjonalności
 * **Reprezentacja grafowa:** Szlaki górskie i szczyty zapisane jako węzły i krawędzie.
